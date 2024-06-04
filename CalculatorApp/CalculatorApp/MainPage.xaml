@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:CalculatorApp"
+             x:Class="CalculatorApp.MainPage">
+
+
+    <StackLayout>
+        <!-- Título -->
+        <StackLayout BackgroundColor="LightBlue" Padding="10" HorizontalOptions="FillAndExpand">
+            <Label Text="CalculatorApp" FontSize="24" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+        
+        <ScrollView>
+        <StackLayout Padding="20">
+            <Entry x:Name="Number1Entry" Placeholder="Ingrese el primer número" Keyboard="Numeric"/>
+            <Entry x:Name="Number2Entry" Placeholder="Ingrese el segundo número" Keyboard="Numeric"/>
+
+            <Button Text="Sumar" Clicked="OnSumButtonClicked"/>
+            <Button Text="Restar" Clicked="OnSubtractButtonClicked"/>
+            <Button Text="Multiplicar" Clicked="OnMultiplyButtonClicked"/>
+            <Button Text="Dividir" Clicked="OnDivideButtonClicked"/>
+
+            <Label x:Name="ResultLabel" Text="Resultado" FontSize="Large" HorizontalOptions="Center"/>
+
+            <Label Text="Listado de Operaciones" FontSize="Medium" HorizontalOptions="Center" Margin="20,10,20,10"/>
+
+            <ListView x:Name="OperationsListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Id}" WidthRequest="50"/>
+                                <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy HH:mm:ss}'}" WidthRequest="200"/>
+                                <Label Text="{Binding OperationType}" WidthRequest="100"/>
+                                <Label Text="{Binding Number1}" WidthRequest="100"/>
+                                <Label Text="{Binding Number2}" WidthRequest="100"/>
+                                <Label Text="{Binding Result}" WidthRequest="100"/>
+                                <Button Text="Eliminar" Clicked="OnDeleteButtonClicked" CommandParameter="{Binding .}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+    </StackLayout>
+</ContentPage>
